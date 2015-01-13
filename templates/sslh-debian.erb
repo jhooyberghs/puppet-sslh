@@ -16,24 +16,24 @@ RUN=<%= scope.lookupvar('sslh::run') %>
 DAEMON=<%= scope.lookupvar('sslh::daemon') %>
 
 DAEMON_OPTS="
-	-user <%= scope.lookupvar('sslh::user') -%>
+	--user <%= scope.lookupvar('sslh::user') -%>
 	--listen <%= scope.lookupvar('sslh::listen_sslh') -%>:<%= scope.lookupvar('sslh::port_sslh') -%>
-<% if defined?sslh::listen_ssl -%>
+<% if defined?scope.lookupvar('sslh::listen_ssl') -%>
 	--ssl <%= scope.lookupvar('sslh::listen_ssl') -%>:<%= scope.lookupvar('sslh::port_ssl') -%>
 <% end -%>
-<% if defined?sslh::listen_http -%>
+<% if defined?scope.lookupvar('listen_http') -%>
 	--http <%= scope.lookupvar('sslh::listen_http') -%>:<%= scope.lookupvar('sslh::port_http') -%>
 <% end -%>
-<% if defined?sslh::listen_ssh -%>
+<% if defined?scope.lookupvar('listen_ssh') -%>
 	--ssh <%= scope.lookupvar('sslh::listen_ssh') -%>:<%= scope.lookupvar('sslh::port_ssh') -%> 
 <% end -%>
-<% if defined?sslh::listen_openvpn -%>
+<% if defined?scope.lookupvar('listen_openvpn') -%>
 	--openvpn <%= scope.lookupvar('sslh::listen_openvpn') -%>:<%= scope.lookupvar('sslh::port_openvpn') -%> 
 <% end -%>
-<% if defined?sslh::listen_xmpp -%>
+<% if defined?scope.lookupvar('listen_xmpp') -%>
 	--xmpp <%= scope.lookupvar('sslh::listen_xmpp') -%>:<%= scope.lookupvar('sslh::port_xmpp') -%> 
 <% end -%>
-<% if defined?sslh::listen_tinc -%>
+<% if defined?scope.lookupvar('listen_tinc') -%>
 	--tinc <%= scope.lookupvar('sslh::listen_tinc') -%>:<%= scope.lookupvar('sslh::port_tinc') -%> 
 <% end -%>
 	--pidfile <%= scope.lookupvar('sslh::pidfile') -%>
