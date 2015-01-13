@@ -1,0 +1,15 @@
+{
+  "name": "jhooyberghs-sslh",
+  "version": "0.0.1",
+  "author": "jhooyberghs",
+  "summary": "A sslh puppet module",
+  "license": "Apache License, Version 2.0",
+  "source": "https://github.com/jhooyberghs/puppet-sslh",
+  "project_page": "https://github.com/jhooyberghs/puppet-sslh",
+  "issues_url": "https://github.com/jhooyberghs/puppet-sslh/issues",
+  "description": "This module will help you install and configure an sslh server",
+  "dependencies": [
+    {"name":"puppetlabs/concat","version_requirement":">=1.0.0"},
+    {"name":"puppetlabs/stdlib","version_requirement":">=4.4.0"},
+  ]
+}
