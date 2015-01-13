@@ -2,7 +2,7 @@
 #
 
 class sslh (
-	$run						= 'YES',
+	$run						= 'yes',
 	$daemon         = $sslh::params::daemon,
 	$config         = $sslh::params::config,
 	$template				= $sslh::params::template,
