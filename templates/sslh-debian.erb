@@ -33,7 +33,7 @@ DAEMON_OPTS="
 <% if defined?scope.lookupvar('listen_xmpp') -%>
 	--xmpp <%= scope.lookupvar('sslh::listen_xmpp') -%>:<%= scope.lookupvar('sslh::port_xmpp') -%> 
 <% end -%>
-<% if defined?scope.lookupvar('listen_tinc') -%>
+<% if defined?scope.lookupvar('sslh::listen_tinc') -%>
 	--tinc <%= scope.lookupvar('sslh::listen_tinc') -%>:<%= scope.lookupvar('sslh::port_tinc') -%> 
 <% end -%>
 	--pidfile <%= scope.lookupvar('sslh::pidfile') -%>
