@@ -10,31 +10,29 @@
 # Once configuration ready, you *must* set RUN to yes here
 # and try to start sslh (standalone mode only)
 
-RUN=<%= scope.lookupvar('sslh::run') %>
+RUN=<%= run %>
 
 # binary to use: forked (sslh) or single-thread (sslh-select) version
-DAEMON=<%= scope.lookupvar('sslh::daemon') %>
+DAEMON=<%= daemon %>
 
-DAEMON_OPTS="
-	--user <%= scope.lookupvar('sslh::user') -%>
-	--listen <%= scope.lookupvar('sslh::listen_sslh') -%>:<%= scope.lookupvar('sslh::port_sslh') -%>
-<% if defined?scope.lookupvar('sslh::listen_ssl') -%>
-	--ssl <%= scope.lookupvar('sslh::listen_ssl') -%>:<%= scope.lookupvar('sslh::port_ssl') -%>
+DAEMON_OPTS="--user <%= @user -%>																			\
+	--listen <%= @listen_sslh -%>:<%= @port_sslh -%>					\
+<% if @listen_ssl -%>
+	--ssl <%= @listen_ssl -%>:<%= @port_ssl -%>								\
 <% end -%>
-<% if defined?scope.lookupvar('listen_http') -%>
-	--http <%= scope.lookupvar('sslh::listen_http') -%>:<%= scope.lookupvar('sslh::port_http') -%>
+<% if @listen_http -%>
+	--http <%= @listen_http -%>:<%= @port_http -%>						\
 <% end -%>
-<% if defined?scope.lookupvar('listen_ssh') -%>
-	--ssh <%= scope.lookupvar('sslh::listen_ssh') -%>:<%= scope.lookupvar('sslh::port_ssh') -%> 
+<% if @listen_ssh -%>
+	--ssh <%= @listen_ssh -%>:<%= @port_ssh -%>								\
 <% end -%>
-<% if defined?scope.lookupvar('listen_openvpn') -%>
-	--openvpn <%= scope.lookupvar('sslh::listen_openvpn') -%>:<%= scope.lookupvar('sslh::port_openvpn') -%> 
+<% if @listen_openvpn -%>
+	--openvpn <%= @listen_openvpn -%>:<%= @port_openvpn -%>		\
 <% end -%>
-<% if defined?scope.lookupvar('listen_xmpp') -%>
-	--xmpp <%= scope.lookupvar('sslh::listen_xmpp') -%>:<%= scope.lookupvar('sslh::port_xmpp') -%> 
+<% if @listen_xmpp -%>
+	--xmpp <%= @listen_xmpp -%>:<%= @port_xmpp -%>						\
 <% end -%>
-<% if defined?scope.lookupvar('sslh::listen_tinc') -%>
-	--tinc <%= scope.lookupvar('sslh::listen_tinc') -%>:<%= scope.lookupvar('sslh::port_tinc') -%> 
+<% if @listen_tinc -%>
+	--tinc <%= @listen_tinc -%>:<%= @port_tinc -%>						\
 <% end -%>
-	--pidfile <%= scope.lookupvar('sslh::pidfile') -%>
-	"
+	--pidfile <%= @pidfile -%>"
