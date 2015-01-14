@@ -15,24 +15,24 @@ RUN=<%= run %>
 # binary to use: forked (sslh) or single-thread (sslh-select) version
 DAEMON=<%= daemon %>
 
-DAEMON_OPTS="--user <%= @user -%>																			\
-	--listen <%= @listen_sslh -%>:<%= @port_sslh -%>					\
+DAEMON_OPTS="--user <%= @user -%>	\
+	--listen <%= @listen_sslh -%>:<%= @port_sslh -%> \
+<% if @listen_ssh -%>
+	--ssh <%= @listen_ssh -%>:<%= @port_ssh -%>	\
+<% end -%>
 <% if @listen_ssl -%>
-	--ssl <%= @listen_ssl -%>:<%= @port_ssl -%>								\
+	--ssl <%= @listen_ssl -%>:<%= @port_ssl -%>	\
 <% end -%>
 <% if @listen_http -%>
-	--http <%= @listen_http -%>:<%= @port_http -%>						\
-<% end -%>
-<% if @listen_ssh -%>
-	--ssh <%= @listen_ssh -%>:<%= @port_ssh -%>								\
+	--http <%= @listen_http -%>:<%= @port_http -%> \
 <% end -%>
 <% if @listen_openvpn -%>
-	--openvpn <%= @listen_openvpn -%>:<%= @port_openvpn -%>		\
+	--openvpn <%= @listen_openvpn -%>:<%= @port_openvpn -%>	 \
 <% end -%>
 <% if @listen_xmpp -%>
-	--xmpp <%= @listen_xmpp -%>:<%= @port_xmpp -%>						\
+	--xmpp <%= @listen_xmpp -%>:<%= @port_xmpp -%> \
 <% end -%>
 <% if @listen_tinc -%>
-	--tinc <%= @listen_tinc -%>:<%= @port_tinc -%>						\
+	--tinc <%= @listen_tinc -%>:<%= @port_tinc -%>	\
 <% end -%>
 	--pidfile <%= @pidfile -%>"
