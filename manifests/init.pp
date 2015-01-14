@@ -17,7 +17,7 @@ class sslh (
   $port_tinc      = $sslh::params::port_tinc,
   $listen_sslh    = '0.0.0.0',
   $listen_ssl     = undef,
-  $listen_http    =	undef,
+  $listen_http    = undef,
   $listen_ssh     = undef,
   $listen_openvpn = undef,
   $listen_xmpp    = undef,
