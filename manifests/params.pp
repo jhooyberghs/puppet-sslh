@@ -4,30 +4,31 @@
 #
 
 class sslh::params {
-	# general config
-	$port_sslh    = '443'
-	$port_ssl     = '443'
-	$port_http    = '80'
-	$port_ssh     = '22'
-	$port_openvpn = '1194'
-	$port_xmpp    = '5222'
-	$port_tinc    = '655'
-	$user					= 'sslh'
-	# OS specific config
+  # general config
+  $port_sslh    = '443'
+  $port_ssl     = '443'
+  $port_http    = '80'
+  $port_ssh     = '22'
+  $port_openvpn = '1194'
+  $port_xmpp    = '5222'
+  $port_tinc    = '655'
+  $user          = 'sslh'
+
+  # OS specific config
   case $::operatingsystem {
-		'ubuntu','debian': {
-			$daemon   = '/usr/sbin/sslh'
-			$config   = '/etc/default/sslh'
-			$pidfile  = '/var/run/sslh/sslh.pid'
-			$template = 'sslh/sslh-debian.erb'
-		}
-		#	'centos','fedora','rhel': {
-		#$daemon = '/usr/sbin/sslh'
-		#$config = '/etc/sysconfig/sslh'
-		#$pidfile = '/var/run/sslh.pid' 
-		#$template = 'sslh/sslh-centos.erb'
-		#}
-		#
-		default: { fail("${::operatingsystem} is currently not supported by this sslh puppet module") }
-	}
+    'ubuntu','debian': {
+      $daemon   = '/usr/sbin/sslh'
+      $config   = '/etc/default/sslh'
+      $pidfile  = '/var/run/sslh/sslh.pid'
+      $template = 'sslh/sslh-debian.erb'
+    }
+    #  'centos','fedora','rhel': {
+    #$daemon = '/usr/sbin/sslh'
+    #$config = '/etc/sysconfig/sslh'
+    #$pidfile = '/var/run/sslh.pid' 
+    #$template = 'sslh/sslh-centos.erb'
+    #}
+    #
+    default: { fail("${::operatingsystem} is currently not supported by this sslh puppet module") }
+  }
 }
