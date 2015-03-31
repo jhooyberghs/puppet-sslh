@@ -2,7 +2,8 @@
 #
 
 class sslh (
-  $run            = $sslh::params::run,
+  $service        = $sslh::params::service,
+  $running        = $sslh::params::running,
   $enable         = $sslh::params::enable,
   $daemon         = $sslh::params::daemon,
   $config         = $sslh::params::config,
@@ -32,11 +33,11 @@ class sslh (
 
   file { $config:
     content => template($template),
-    notify  => Service[$daemon],
+    notify  => Service[$service],
   }
 
   service { 'sslh':
-    ensure  => $run,
+    ensure  => $running,
     enable  => $enable,
     require => File[$config],
   }
