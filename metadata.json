@@ -8,8 +8,5 @@
   "project_page": "https://github.com/jhooyberghs/puppet-sslh",
   "issues_url": "https://github.com/jhooyberghs/puppet-sslh/issues",
   "description": "This module will help you install and configure an sslh server",
-  "dependencies": [
-    {"name":"puppetlabs/concat","version_requirement":">=1.0.0"},
-    {"name":"puppetlabs/stdlib","version_requirement":">=4.4.0"},
-  ]
+  "dependencies": [ ]
 }
