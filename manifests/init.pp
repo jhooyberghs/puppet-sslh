@@ -8,6 +8,7 @@ class sslh (
   $template       = $sslh::params::template,
   $pidfile        = $sslh::params::pidfile,
   $user           = $sslh::params::user,
+  $package        = $sslh::params::package,
   $port_sslh      = $sslh::params::port_sslh,
   $port_ssl       = $sslh::params::port_ssl,
   $port_http      = $sslh::params::port_http,
@@ -25,18 +26,19 @@ class sslh (
   $supported_apps = ['ssl','http','ssh','openvpn','xmpp','tinc'],
 ) inherits sslh::params {
 
-  package { 'sslh':
+  package { $package:
     ensure => installed,
-  } ~>
+  }
 
   file { $config:
     content => template($template),
     notify  => Service['sslh'],
-  } ~>
+  }
 
   service { 'sslh':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => File[$config],
   }
 
 }
