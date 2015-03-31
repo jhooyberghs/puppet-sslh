@@ -23,7 +23,6 @@ class sslh (
   $listen_openvpn = undef,
   $listen_xmpp    = undef,
   $listen_tinc    = undef,
-  $supported_apps = ['ssl','http','ssh','openvpn','xmpp','tinc'],
 ) inherits sslh::params {
 
   package { $package:
