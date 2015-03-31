@@ -2,13 +2,14 @@
 A puppet module for sslh - Applicative protocol multiplexer (https://github.com/yrutschle/sslh)
 
 This module is meant for Debian at the moment. It can still use a lot of additions and contributions, so feel free to add yours.
-  It currently supports multiplexing of
-    * ssl (https)
-    * http
-    * ssh
-    * openvpn
-    * xmpp
-    * tinc
+
+It currently supports multiplexing of
+* ssl (https)
+* http
+* ssh
+* openvpn
+* xmpp
+* tinc
 
 ## Supported Platforms
 
