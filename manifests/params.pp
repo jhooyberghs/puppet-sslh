@@ -5,6 +5,8 @@
 
 class sslh::params {
   # general config
+  $run          = 'running'
+  $enable       = true
   $port_sslh    = '443'
   $port_ssl     = '443'
   $port_http    = '80'

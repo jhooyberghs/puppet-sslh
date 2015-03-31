@@ -2,7 +2,8 @@
 #
 
 class sslh (
-  $run            = 'yes',
+  $run            = $sslh::params::run,
+  $enable         = $sslh::params::enable,
   $daemon         = $sslh::params::daemon,
   $config         = $sslh::params::config,
   $template       = $sslh::params::template,
@@ -26,17 +27,17 @@ class sslh (
 ) inherits sslh::params {
 
   package { $package:
-    ensure => installed,
+    ensure => present,
   }
 
   file { $config:
     content => template($template),
-    notify  => Service['sslh'],
+    notify  => Service[$daemon],
   }
 
   service { 'sslh':
-    ensure  => running,
-    enable  => true,
+    ensure  => $run,
+    enable  => $enable,
     require => File[$config],
   }
 
