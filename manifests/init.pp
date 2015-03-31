@@ -4,7 +4,7 @@
 class sslh (
   $service        = $sslh::params::service,
   $running        = $sslh::params::running,
-  $run            = $sslh::params::running,
+  $run            = $sslh::params::run,
   $enable         = $sslh::params::enable,
   $daemon         = $sslh::params::daemon,
   $config         = $sslh::params::config,
