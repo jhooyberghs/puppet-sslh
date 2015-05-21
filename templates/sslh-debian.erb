@@ -23,9 +23,6 @@ DAEMON_OPTS="--user <%= @user -%>	\
 <% if @listen_ssl -%>
 	--ssl <%= @listen_ssl -%>:<%= @port_ssl -%>	\
 <% end -%>
-<% if @listen_http -%>
-	--http <%= @listen_http -%>:<%= @port_http -%> \
-<% end -%>
 <% if @listen_openvpn -%>
 	--openvpn <%= @listen_openvpn -%>:<%= @port_openvpn -%>	 \
 <% end -%>
@@ -34,5 +31,8 @@ DAEMON_OPTS="--user <%= @user -%>	\
 <% end -%>
 <% if @listen_tinc -%>
 	--tinc <%= @listen_tinc -%>:<%= @port_tinc -%>	\
+<% end -%>
+<% if @listen_http -%>
+	--http <%= @listen_http -%>:<%= @port_http -%> \
 <% end -%>
 	--pidfile <%= @pidfile -%>"
