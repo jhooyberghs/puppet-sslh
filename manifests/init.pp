@@ -3,9 +3,9 @@
 
 class sslh (
   $service        = $sslh::params::service,
-  $running        = $sslh::params::running,
-  $run            = $sslh::params::run,
-  $enable         = $sslh::params::enable,
+  $service_ensure = $sslh::params::service_ensure,
+  $service_enable = $sslh::params::service_enable,
+  $run            = $sslh::params::service_run,
   $daemon         = $sslh::params::daemon,
   $config         = $sslh::params::config,
   $template       = $sslh::params::template,
@@ -27,6 +27,38 @@ class sslh (
   $listen_xmpp    = undef,
   $listen_tinc    = undef,
 ) inherits sslh::params {
+  # validate params
+  validate_string( $service_ensure, 'running', 'stopped')
+  validate_string( $run, 'yes', 'no')
+  validate_bool( $service_enable )
+
+  if (( $listen_sslh ) and ( ! is_ip_address($listen_sslh) )) {
+      fail("Invalid IP address ${listen_sslh}")
+  }
+  if (( $listen_ssl ) and ( ! is_ip_address($listen_ssl) )) {
+      fail("Invalid IP address ${listen_ssl}")
+  }
+  if (( $listen_http ) and ( ! is_ip_address($listen_http) )) {
+      fail("Invalid IP address ${listen_http}")
+  }
+  if (( $listen_ssh ) and ( ! is_ip_address($listen_ssh) )) {
+      fail("Invalid IP address ${listen_ssh}")
+  }
+  if (( $listen_openvpn ) and ( ! is_ip_address($listen_openvpn) )) {
+      fail("Invalid IP address ${listen_openvpn}")
+  }
+  if (( $listen_xmpp ) and ( ! is_ip_address($listen_xmpp) )) {
+      fail("Invalid IP address ${listen_xmpp}")
+  }
+  if ( ( $listen_tinc ) and ( ! is_ip_address($listen_tinc) )) {
+      fail("Invalid IP address ${listen_tinc}")
+  }
+  validate_re($port_ssl, '^[0-9]{1,5}$', "Invalid port: ${port_ssl}")
+  validate_re($port_http, '^[0-9]{1,5}$', "Invalid port: ${port_http}")
+  validate_re($port_ssh, '^[0-9]{1,5}$', "Invalid port: ${port_ssh}")
+  validate_re($port_openvpn, '^[0-9]{1,5}$', "Invalid port: ${port_openvpn}")
+  validate_re($port_xmpp, '^[0-9]{1,5}$', "Invalid port: ${port_xmpp}")
+  validate_re($port_tinc, '^[0-9]{1,5}$', "Invalid port: ${port_tinc}")
 
   package { $package:
     ensure => present,
@@ -37,9 +69,9 @@ class sslh (
     notify  => Service[$service],
   }
 
-  service { 'sslh':
-    ensure  => $running,
-    enable  => $enable,
+  service { $service:
+    ensure  => $service_ensure,
+    enable  => $service_enable,
     require => File[$config],
   }
 
