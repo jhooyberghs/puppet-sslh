@@ -19,7 +19,7 @@ It currently supports multiplexing of
 
 # Requirements
 
-None at the moment
+puppetlabs/stdlib for param validation checking
 
 ## Usage
 Example to use sslh to multiplex ssh, https (=ssl) and openvpn
