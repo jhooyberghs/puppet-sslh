@@ -35,24 +35,6 @@ class sslh (
   if (( $listen_sslh ) and ( ! is_ip_address($listen_sslh) )) {
       fail("Invalid IP address ${listen_sslh}")
   }
-  if (( $listen_ssl ) and ( ! is_ip_address($listen_ssl) )) {
-      fail("Invalid IP address ${listen_ssl}")
-  }
-  if (( $listen_http ) and ( ! is_ip_address($listen_http) )) {
-      fail("Invalid IP address ${listen_http}")
-  }
-  if (( $listen_ssh ) and ( ! is_ip_address($listen_ssh) )) {
-      fail("Invalid IP address ${listen_ssh}")
-  }
-  if (( $listen_openvpn ) and ( ! is_ip_address($listen_openvpn) )) {
-      fail("Invalid IP address ${listen_openvpn}")
-  }
-  if (( $listen_xmpp ) and ( ! is_ip_address($listen_xmpp) )) {
-      fail("Invalid IP address ${listen_xmpp}")
-  }
-  if ( ( $listen_tinc ) and ( ! is_ip_address($listen_tinc) )) {
-      fail("Invalid IP address ${listen_tinc}")
-  }
   validate_re($port_ssl, '^[0-9]{1,5}$', "Invalid port: ${port_ssl}")
   validate_re($port_http, '^[0-9]{1,5}$', "Invalid port: ${port_http}")
   validate_re($port_ssh, '^[0-9]{1,5}$', "Invalid port: ${port_ssh}")
