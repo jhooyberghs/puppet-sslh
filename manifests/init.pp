@@ -9,6 +9,7 @@ class sslh (
   $daemon         = $sslh::params::daemon,
   $config         = $sslh::params::config,
   $template       = $sslh::params::template,
+  $source         = undef,
   $pidfile        = $sslh::params::pidfile,
   $user           = $sslh::params::user,
   $package        = $sslh::params::package,
@@ -46,9 +47,16 @@ class sslh (
     ensure => present,
   }
 
-  file { $config:
-    content => template($template),
-    notify  => Service[$service],
+  if $source {
+    file { $config:
+      source => $source,
+    }
+  }
+  else {
+    file { $config:
+      content => template($template),
+      notify  => Service[$service],
+    }
   }
 
   service { $service:
