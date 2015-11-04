@@ -34,3 +34,10 @@ class { 'sslh':
   port_openvpn   => '1194',
 }
 ```
+Example to use sslh with your own static configuration
+
+```
+class { 'sslh':
+  source   => 'puppet:///my_own_profiles/sslh-config',
+}
+```
