@@ -1,6 +1,6 @@
 {
   "name": "jhooyberghs-sslh",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "author": "jhooyberghs",
   "summary": "A sslh puppet module",
   "license": "Apache License, Version 2.0",
@@ -9,6 +9,6 @@
   "issues_url": "https://github.com/jhooyberghs/puppet-sslh/issues",
   "description": "This module will help you install and configure an sslh server",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">=4.4.0"},
+    {"name":"puppetlabs/stdlib","version_requirement":">=4.4.0"}
   ]
 }
